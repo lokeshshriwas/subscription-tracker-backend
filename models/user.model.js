@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "User Name is required"],
         trim: true,
-        minLenght: 2,
+        minLength: 2,
         maxLength: 50,
     },
     email: {
@@ -13,14 +13,18 @@ const userSchema = new mongoose.Schema({
         required: [true, "User Email is required"],
         unique: true,
         trim: true,
-        minLenght: 2,
+        minLength: 2,
         maxLength: 50,
         match: [/^\S+@\S+\.\S+$/, 'Please provide a valid email address']
+    },
+    isAdmin:{
+        type: Boolean,
+        default : false
     },
     password: {
         type: String,
         required: [true, "User Password is required"],
-        minLenght: 6,
+        minLength: 6,
         // select: false, // prevent the password field from being returned by default in queries
     },
 }, { timestamps: true });
